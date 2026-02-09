@@ -16,8 +16,8 @@ MonoBehaviour:
   - From: Player 1 CinemachineCamera
     To: player1 over CinemachineCamera
     Blend:
-      Style: 0
-      Time: 0
+      Style: 4
+      Time: 1
       CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -27,7 +27,7 @@ MonoBehaviour:
   - From: player1 over CinemachineCamera
     To: Player 1  sky CinemachineCamera
     Blend:
-      Style: 3
+      Style: 1
       Time: 3
       CustomCurve:
         serializedVersion: 2
@@ -38,7 +38,7 @@ MonoBehaviour:
   - From: Player 2 CinemachineCamera
     To: player2 over CinemachineCamera
     Blend:
-      Style: 0
+      Style: 4
       Time: 0
       CustomCurve:
         serializedVersion: 2
@@ -60,7 +60,7 @@ MonoBehaviour:
   - From: 'Player 3 CinemachineCamera '
     To: player3 over CinemachineCamera
     Blend:
-      Style: 0
+      Style: 4
       Time: 0
       CustomCurve:
         serializedVersion: 2

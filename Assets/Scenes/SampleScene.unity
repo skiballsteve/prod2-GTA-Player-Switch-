@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1141235460769293770, guid: c02cc5368e161514b8271cda16061682, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3462458029666553864, guid: c02cc5368e161514b8271cda16061682, type: 3}
       propertyPath: m_IsActive
@@ -805,7 +805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1141235460769293770, guid: c02cc5368e161514b8271cda16061682, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3462458029666553864, guid: c02cc5368e161514b8271cda16061682, type: 3}
       propertyPath: m_IsActive
@@ -860,6 +860,62 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c02cc5368e161514b8271cda16061682, type: 3}
+--- !u!1 &589863172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 589863174}
+  - component: {fileID: 589863173}
+  m_Layer: 0
+  m_Name: Blend controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &589863173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589863172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5bfb7b023102b499a46db697d981b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  VirtualCameras:
+  - {fileID: 332001356}
+  - {fileID: 611461836}
+  - {fileID: 1390137388}
+  - {fileID: 706574803}
+  - {fileID: 961868983}
+  - {fileID: 2050352696}
+  - {fileID: 126524084}
+  - {fileID: 1413423441}
+  - {fileID: 484923665}
+  ChangeCamDelay: 3
+  blendProgress: 0
+--- !u!4 &589863174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589863172}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 275.49658, y: -0.00001, z: 246.5438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &611461835
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,12 +927,12 @@ GameObject:
   - component: {fileID: 611461837}
   - component: {fileID: 611461836}
   m_Layer: 0
-  m_Name: player1 over CinemachineCamera
+  m_Name: player 1 over CinemachineCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &611461836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,8 +1416,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901776635}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.69492114, y: -0.0006508507, z: 0.0006266614, w: -0.7190854}
-  m_LocalPosition: {x: 303.63, y: 4.9, z: 235.88}
+  m_LocalRotation: {x: -0.12298548, y: 0.013989128, z: -0.001734609, w: -0.9923084}
+  m_LocalPosition: {x: 281.21, y: 3.07, z: 229.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1517,12 +1573,12 @@ GameObject:
   - component: {fileID: 961868984}
   - component: {fileID: 961868983}
   m_Layer: 0
-  m_Name: player2 over CinemachineCamera
+  m_Name: player 2 over CinemachineCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &961868983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1849,12 +1905,12 @@ GameObject:
   - component: {fileID: 1413423442}
   - component: {fileID: 1413423441}
   m_Layer: 0
-  m_Name: player3 over CinemachineCamera
+  m_Name: player 3 over CinemachineCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1413423441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,3 +2334,4 @@ SceneRoots:
   - {fileID: 484923666}
   - {fileID: 706574804}
   - {fileID: 2050352697}
+  - {fileID: 589863174}
