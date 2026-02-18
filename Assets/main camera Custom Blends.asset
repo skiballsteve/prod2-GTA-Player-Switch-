@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBlenderSettings
   CustomBlends:
   - From: Player 1 CinemachineCamera
-    To: player1 over CinemachineCamera
+    To: player 1 over CinemachineCamera
     Blend:
       Style: 4
       Time: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - From: player1 over CinemachineCamera
+  - From: player 1 over CinemachineCamera
     To: Player 1  sky CinemachineCamera
     Blend:
       Style: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - From: Player 2 CinemachineCamera
-    To: player2 over CinemachineCamera
+    To: player 2 over CinemachineCamera
     Blend:
       Style: 4
       Time: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - From: player2 over CinemachineCamera
+  - From: player 2 over CinemachineCamera
     To: Player 2 sky CinemachineCamera
     Blend:
       Style: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - From: 'Player 3 CinemachineCamera '
-    To: player3 over CinemachineCamera
+    To: player 3 over CinemachineCamera
     Blend:
       Style: 4
       Time: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - From: player3 over CinemachineCamera
+  - From: player 3 over CinemachineCamera
     To: 'Player 3 sky CinemachineCamera '
     Blend:
       Style: 1

@@ -12,6 +12,12 @@ public class TranstionController : MonoBehaviour
     [Header("Blend Properties")]
     public float ChangeCamDelay = 3f;
     public float blendProgress;
+
+    [Header("Players")]
+    public int PlayerIndex;
+    public GameObject Player1;
+    public GameObject Player2;
+    public GameObject Player3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,18 +43,65 @@ public class TranstionController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftAlt) )
         {
-           StartCoroutine( ChangeCmaeras(VirtualCameras[0], VirtualCameras[1], VirtualCameras[2]));
-            
+            ChangePlayer();
+
+
         }
     }
 
     public void ChangePlayer()
     {
-        
+        int Player1Cam = 0;
+        int Player1OverCam = 1;
+        int Player1SkyCam = 2;
+
+        int Player2Cam = 3;
+        int Player2OverCam = 4;
+        int Player2SkyCam = 5;
+
+        int Player3Cam = 6;
+        int Player3OverCam = 7;
+        int Player3SkyCam = 8;
+
+        //Player1
+        if (Player1.activeSelf && PlayerIndex == 2)
+        {
+            StartCoroutine(ChangeCmaeras(VirtualCameras[Player1Cam], VirtualCameras[Player1OverCam], VirtualCameras[Player1SkyCam],Player2Cam,Player2OverCam,Player2SkyCam, Player1SkyCam));
+        }
+
+        if (Player1.activeSelf && PlayerIndex == 3)
+        {
+            StartCoroutine(ChangeCmaeras(VirtualCameras[Player1Cam], VirtualCameras[Player1OverCam], VirtualCameras[Player1SkyCam], Player3Cam, Player3OverCam, Player3SkyCam, Player1SkyCam));
+        }
+
+        //Player2
+        if (Player2.activeSelf && PlayerIndex == 1)
+        {
+            StartCoroutine(ChangeCmaeras(VirtualCameras[Player2Cam], VirtualCameras[Player2OverCam], VirtualCameras[Player2SkyCam], Player1Cam, Player1OverCam, Player1SkyCam, Player2SkyCam));
+        }
+
+        if (Player2.activeSelf && PlayerIndex == 3)
+        {
+            StartCoroutine(ChangeCmaeras(VirtualCameras[Player2Cam], VirtualCameras[Player2OverCam], VirtualCameras[Player2SkyCam], Player3Cam, Player3OverCam, Player3SkyCam, Player2SkyCam));
+        }
+
+        //Player3
+        if (Player3.activeSelf && PlayerIndex == 1)
+        {
+            StartCoroutine(ChangeCmaeras(VirtualCameras[Player3Cam], VirtualCameras[Player3OverCam], VirtualCameras[Player3SkyCam], Player1Cam, Player1OverCam, Player1SkyCam, Player3SkyCam));
+        }
+
+        if (Player3.activeSelf && PlayerIndex == 2)
+        {
+            StartCoroutine(ChangeCmaeras(VirtualCameras[Player3Cam], VirtualCameras[Player3OverCam], VirtualCameras[Player3SkyCam], Player2Cam, Player2OverCam, Player2SkyCam, Player3SkyCam));
+        }
+
+
+
 
     }
 
-    public IEnumerator ChangeCmaeras(CinemachineCamera pCam, CinemachineCamera overCam, CinemachineCamera skyCam)
+    public IEnumerator ChangeCmaeras(CinemachineCamera pCam, CinemachineCamera overCam, CinemachineCamera skyCam, int SecondPlayerCam, int SecondPlayerOverCam, int SecondPlayerSkyCam, int PreviousePlayerSkyCam)
     {
        
         if (pCam.gameObject.activeSelf )
@@ -63,8 +116,10 @@ public class TranstionController : MonoBehaviour
         {
             overCam.gameObject.SetActive(false);
             skyCam.gameObject.SetActive(true);
-        } 
-        
+        }
+        yield return new WaitForSeconds(ChangeCamDelay);
+
+        StartCoroutine(ChangeFromSkyCameras(VirtualCameras[PreviousePlayerSkyCam], VirtualCameras[SecondPlayerSkyCam], VirtualCameras[SecondPlayerOverCam], VirtualCameras[SecondPlayerCam]));
 
     }
 
@@ -76,7 +131,7 @@ public class TranstionController : MonoBehaviour
             SkyCam2.gameObject.SetActive(true);
 
         }
-        yield return new WaitForSeconds(ChangeCamDelay);
+        yield return new WaitForSeconds(7f);
 
         if (SkyCam2.gameObject.activeSelf)
         {
@@ -84,7 +139,7 @@ public class TranstionController : MonoBehaviour
             poverCam.gameObject.SetActive(true);
         }
 
-        yield return new WaitForSeconds(ChangeCamDelay);
+        yield return new WaitForSeconds(3f);
         if (poverCam.gameObject.activeSelf)
         {
             poverCam.gameObject.SetActive(false);
