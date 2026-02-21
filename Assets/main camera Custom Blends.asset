@@ -39,7 +39,7 @@ MonoBehaviour:
     To: player 2 over CinemachineCamera
     Blend:
       Style: 4
-      Time: 0
+      Time: 1
       CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -61,7 +61,7 @@ MonoBehaviour:
     To: player 3 over CinemachineCamera
     Blend:
       Style: 4
-      Time: 0
+      Time: 1
       CustomCurve:
         serializedVersion: 2
         m_Curve: []

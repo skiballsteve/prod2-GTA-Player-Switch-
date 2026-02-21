@@ -18,6 +18,20 @@ public class TranstionController : MonoBehaviour
     public GameObject Player1;
     public GameObject Player2;
     public GameObject Player3;
+
+    [Header("Canvas")]
+    public GameObject UICanvas;
+
+    [Header("SloMo")]
+    public float slowSpeed = 0.25f;
+    public float transitionSpeed = 5f;
+
+    public float minTimeScale = 0.1f;
+    public float maxTimeScale = 1f;
+    public float slowDownSpeed = 10f;
+    public float speedUpSpeed = 1f;
+
+    public bool isSloMo;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +43,8 @@ public class TranstionController : MonoBehaviour
     void Update()
     {
         PlayerInputCheck();
+        EnableSlowMotion();
+        ActivePlayerController();
 
         if (brain.IsBlending)
         {
@@ -37,17 +53,134 @@ public class TranstionController : MonoBehaviour
 
 
         }
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
     }
 
     public void PlayerInputCheck()
     {
         if(Input.GetKeyDown(KeyCode.LeftAlt) )
         {
-            ChangePlayer();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            isSloMo = true;
+            UICanvas.SetActive(true);
 
+        }
+      
+        if (Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            ChangePlayer();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            UICanvas.SetActive(false);
+            isSloMo = false;
+        }
+    }
+    void EnableSlowMotion()
+    {
+        if(isSloMo)
+        {
+            Time.timeScale = Mathf.Max(minTimeScale, Time.timeScale - slowDownSpeed * Time.unscaledDeltaTime);
+
+        }
+        else
+        {
+            Time.timeScale = Mathf.Min(maxTimeScale, Time.timeScale + speedUpSpeed * Time.unscaledDeltaTime);
 
         }
     }
+
+    void ActivePlayerController()
+    {
+        if (PlayerIndex == 1)
+        {
+            Player1.GetComponent<PlayerController>().enabled = true;
+
+            Player2.GetComponent<PlayerController>().enabled = false;
+            Player3.GetComponent<PlayerController>().enabled = false;
+
+            //Sky cams
+            VirtualCameras[5].transform.rotation = VirtualCameras[2].transform.rotation;
+            VirtualCameras[8].transform.rotation = VirtualCameras[2].transform.rotation;
+
+            //Over Cams
+            VirtualCameras[4].transform.rotation = VirtualCameras[1].transform.rotation;
+            VirtualCameras[7].transform.rotation = VirtualCameras[1].transform.rotation;
+
+            //disable animators
+
+        }
+        else
+        {
+            StartCoroutine(AnimatorDelay(Player1.GetComponentInChildren<Animator>()));
+
+        }
+
+
+        if (PlayerIndex == 2)
+        {
+            Player2.GetComponent<PlayerController>().enabled = true;
+
+
+            Player1.GetComponent<PlayerController>().enabled = false;
+            Player3.GetComponent<PlayerController>().enabled = false;
+
+            //Sky cams
+            VirtualCameras[2].transform.rotation = VirtualCameras[5].transform.rotation;
+            VirtualCameras[8].transform.rotation = VirtualCameras[5].transform.rotation;
+
+            //Over Cams
+            VirtualCameras[1].transform.rotation = VirtualCameras[4].transform.rotation;
+            VirtualCameras[7].transform.rotation = VirtualCameras[4].transform.rotation;
+
+            //disable animators
+
+
+        }
+        else
+        {
+            StartCoroutine(AnimatorDelay(Player2.GetComponentInChildren<Animator>()));
+
+        }
+
+
+        if (PlayerIndex == 3)
+        {
+            Player3.GetComponent<PlayerController>().enabled = true;
+
+
+            Player1.GetComponent<PlayerController>().enabled = false;
+            Player2.GetComponent<PlayerController>().enabled = false;
+
+            //Sky cams
+            VirtualCameras[5].transform.rotation = VirtualCameras[8].transform.rotation;
+            VirtualCameras[2].transform.rotation = VirtualCameras[8].transform.rotation;
+
+            //Over Cams
+            VirtualCameras[4].transform.rotation = VirtualCameras[7].transform.rotation;
+            VirtualCameras[1].transform.rotation = VirtualCameras[7].transform.rotation;
+
+            //disable animators
+           
+        }
+        else
+        {
+            StartCoroutine(AnimatorDelay(Player3.GetComponentInChildren<Animator>()));
+
+        }
+
+    }
+
+    IEnumerator AnimatorDelay(Animator ani)
+    {
+        yield return new WaitForSeconds(5f);
+        ani.enabled = false;    
+        yield return new WaitForSeconds(1f);
+       // ani.enabled = true;
+
+    }
+   
 
     public void ChangePlayer()
     {

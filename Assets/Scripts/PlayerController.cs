@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleMovement();
         HandleCamera();
-        HandleThrow();
+       // HandleThrow();
     }
 
     #endregion
@@ -247,7 +247,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            playerAniController.SetBool("IsThrowing", true);
+            //velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        else
+        {
+            playerAniController.SetBool("IsThrowing", false);
         }
     }
 
@@ -286,10 +291,10 @@ public class PlayerController : MonoBehaviour
             HandleNormalMode(offset);
         }
 
-        if (Input.GetButtonUp("Fire2"))
-        {
-            ResetAxeThrowPoint();
-        }
+       // if (Input.GetButtonUp("Fire2"))
+       // {
+            //ResetAxeThrowPoint();
+       // }
     }
 
     void UpdateCameraRotation()
@@ -304,7 +309,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleAimMode(Vector3 offset)
     {
-        ProcessRaycastAiming();
+        //ProcessRaycastAiming();
         PositionAndRotateCamera(offset);
         RotatePlayerToCamera();
     }
@@ -367,17 +372,17 @@ public class PlayerController : MonoBehaviour
 
     #region Combat
 
-    public void HandleThrow()
-    {
-        if (Input.GetButtonDown("Fire1") && aniAxe.activeSelf)
-        {
-            playerAniController.SetBool("IsThrowing", true);
-        }
-        else
-        {
-            playerAniController.SetBool("IsThrowing", false);
-        }
-    }
+   // public void HandleThrow()
+    //{
+    //    if (Input.GetButtonDown("Fire1") && aniAxe.activeSelf)
+    //    {
+    //       playerAniController.SetBool("IsThrowing", true);
+    //    }
+     //   else
+     //   {
+    //        playerAniController.SetBool("IsThrowing", false);
+    //    }
+   // }
 
     #endregion
 }
