@@ -1,5 +1,4 @@
 using Unity.Cinemachine;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour

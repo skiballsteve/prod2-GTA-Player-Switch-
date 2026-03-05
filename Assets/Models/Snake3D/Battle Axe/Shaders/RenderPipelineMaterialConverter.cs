@@ -4,7 +4,7 @@ using System.IO;
 
 public class RenderPipelineConverter
 {
-    private const string MenuPath = "Tools/Convert Materials/";
+   /* private const string MenuPath = "Tools/Convert Materials/";
 
     [MenuItem(MenuPath + "Convert to HDRP Lit")]
     private static void ConvertToHDRP()
@@ -155,5 +155,5 @@ public class RenderPipelineConverter
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-    }
+    }*/
 }
