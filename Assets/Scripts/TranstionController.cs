@@ -52,25 +52,12 @@ public class TranstionController : MonoBehaviour
         
         ActivePlayerController();
 
-        if (!PausePanle)
+        if (!PausePanle.activeSelf)
         {
             EnableSlowMotion();
 
         }
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
-
-        if(UICanvas.activeSelf)
-        {
-            
-            Player1.GetComponent<PlayerController>().enabled = false;
-            Player2.GetComponent<PlayerController>().enabled = false;
-            Player3.GetComponent<PlayerController>().enabled = false;
-
-            ResetAllBools(Player1.GetComponentInChildren<Animator>());
-            ResetAllBools(Player2.GetComponentInChildren<Animator>());
-            ResetAllBools(Player3.GetComponentInChildren<Animator>());
-        }
-        
 
     }
 
@@ -82,9 +69,10 @@ public class TranstionController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             isSloMo = true;
-            // DisablePlayerControllers();
+            
 
             UICanvas.SetActive(true);
+           
 
         }
       
@@ -93,10 +81,15 @@ public class TranstionController : MonoBehaviour
             if (storactive != PlayerIndex)
             {
                 ChangePlayer();
+                Disableanimators();
+               
+
             }
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             UICanvas.SetActive(false);
+            
+
             isSloMo = false;
         }
     }
@@ -233,9 +226,9 @@ public class TranstionController : MonoBehaviour
     void Disableanimators()
     {
 
-        Player1.GetComponentInChildren<Animator>().Play("Idell");
-        Player2.GetComponentInChildren<Animator>().Play("Idell");
-        Player3.GetComponentInChildren<Animator>().Play("Idell");
+        ResetAllBools(Player1.GetComponentInChildren<Animator>());
+        ResetAllBools(Player2.GetComponentInChildren<Animator>());
+        ResetAllBools(Player3.GetComponentInChildren<Animator>());
 
     }
     void EnableSlowMotion()
